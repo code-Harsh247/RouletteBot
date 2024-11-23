@@ -12,14 +12,14 @@ using namespace std;
 #define INSUFFICIENT_BALANCE -2
 #define DONTCARE -3
 #define TREND_THRESHOLD 1
-#define DEBUG false
+#define DEBUG true
 
 vector<int> DATA = {1, 1};
-vector<int> newData = {1, 2, 3, 1, 2, 3, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2};
+vector<int> newData = {1, 2, 3, 1, 1, 2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2};
 int ptr = 0;
 int profit = 0;
 int initialBalance = 640;
-int targetProfit = 200;
+int targetProfit = 20;
 int Balance = initialBalance;
 int winCount = 0;
 int lossCount = 0;
@@ -187,20 +187,15 @@ int stateMachine() {
                 }
                 break;
 
-            case 4: 
-                cout << "Target profit reached\n";
-                cout << "Final balance: " << Balance << endl;
-                cout << "Win count: " << winCount << endl;
-                cout << "Loss count: " << lossCount << endl;
-                return 0;
-
             default:
                 cout << "Error: Invalid state\n";
                 return ERROR;
         }
     }
 
-    
+    if(currState == 4){
+        cout << "Target profit achieved.\n";
+    }
     cout << "State machine terminated.\n";
     cout << "Final balance: " << Balance << endl;
     cout << "Win count: " << winCount << endl;
